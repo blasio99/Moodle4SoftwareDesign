@@ -1,0 +1,17 @@
+pluginManagement {
+	repositories {
+		maven { url 'https://repo.spring.io/release' }
+		gradlePluginPortal()
+	}
+	resolutionStrategy {
+		eachPlugin {
+			if (requested.id.id == 'org.hibernate.orm') {
+				useModule('org.hibernate:hibernate-gradle-plugin:5.4.29.Final')
+			}
+		}
+	}
+}
+rootProject.name = 'moodle'
+
+include 'moodle-server'
+include 'moodle-common'
