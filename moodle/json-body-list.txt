@@ -10,3 +10,12 @@ http://localhost:8080/admin/api/lab/add
 }
 
 _________________________________________________________________________________________________________
+POST
+http://localhost:8080/teacher/api/assignment/add
+
+{
+ "laboratoryNumber" : "3",
+ "name" : "Lab 3 code for group 4",
+ "deadline" : "2021-04-21T20:00:00",
+ "description" : "Please deliver a github link to the project"
+}
