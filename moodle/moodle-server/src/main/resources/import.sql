@@ -1,0 +1,3 @@
+insert into user (username, password, role) values ("blasio99"     , "$2a$10$emzGRajpkxZ9nr7G8Vnn0ul.0/I3oskXYk8.iwt7P5JJnP67rFBYG", 'TEACHER');
+insert into user (username, password, role) values ("benedekbalazs", "$2y$12$HmU0UzP2fd64N56ys0Vk7ePDgpdvnjiKRtDtHRzj8sZk1bchRKofm", 'STUDENT');
+insert into user (username, password, role) values ("elonmusk"     , "$2y$12$rR7xCTwOsS5N6m6KT19Ceuvf/7g9WpWT7tZd5qU5Jkl07CpJGqbjm", 'STUDENT');

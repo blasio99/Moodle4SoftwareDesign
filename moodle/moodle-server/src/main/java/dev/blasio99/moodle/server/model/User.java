@@ -1,4 +1,4 @@
-package dev.blasio99.untoldfestival.server.model;
+package dev.blasio99.moodle.server.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
