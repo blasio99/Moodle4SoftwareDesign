@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import dev.blasio99.moodle.server.enums.Roles;
 import dev.blasio99.moodle.server.model.User;
 import dev.blasio99.moodle.server.repo.UserRepository;
 
@@ -22,7 +23,7 @@ public class UserService {
     @Autowired 
     private ValidationService validator;
 
-    public User registerUser(User user, String role) throws ServiceException {
+    public User registerUser(User user, Roles role) throws ServiceException {
     
         if (!validator.validateUsername(user.getUsername())) 
 			throw new ServiceException("Invalid username!", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -52,8 +53,8 @@ public class UserService {
         
     }
 
-    public List<User> getCashiers() {
-        return userRepository.findByRole("CASHIER");
+    public List<User> getStudents() {
+        return userRepository.findByRole(Roles.STUDENT);
     }
 
     public User getUserByUsername(String username) throws ServiceException {
@@ -62,12 +63,12 @@ public class UserService {
         return user;
     }
 
-	public User registerCashier(User user) throws ServiceException {
-        return registerUser(user, "CASHIER");
+	public User registerStudent(User user) throws ServiceException {
+        return registerUser(user, Roles.STUDENT);
     }
 
-    public User registerAdmin(User user) throws ServiceException {
-        return registerUser(user, "ADMIN");
+    public User registerTeacher(User user) throws ServiceException {
+        return registerUser(user, Roles.TEACHER);
     }
 
 	public User updateUser(User user) throws ServiceException {

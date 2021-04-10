@@ -34,10 +34,10 @@ public class LaboratoryResource {
 
 	
     @GetMapping("api/lab/title/{title}")
-    public ResponseEntity<List<LaboratoryDTO>> getLaboratoriesByTitle(@PathVariable String title) {
+    public ResponseEntity<LaboratoryDTO> getLaboratoriesByTitle(@PathVariable String title) {
         try {
-            List<LaboratoryDTO> laboratories = laboratoryAssembler.createDTOList(laboratoryService.getLaboratoriesByTitle(title));
-            return new ResponseEntity<>(laboratories, HttpStatus.OK);
+            LaboratoryDTO laboratory = laboratoryAssembler.createDTO(laboratoryService.getLaboratoryByTitle(title));
+            return new ResponseEntity<>(laboratory, HttpStatus.OK);
         }
         catch(ServiceException e) {
             return new ResponseEntity<>(e.getHttpStatus());

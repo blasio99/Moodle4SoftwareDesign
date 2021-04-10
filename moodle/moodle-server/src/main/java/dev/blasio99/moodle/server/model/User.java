@@ -2,7 +2,11 @@ package dev.blasio99.moodle.server.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+
+import dev.blasio99.moodle.server.enums.Roles;
 
 @Entity
 @Table
@@ -11,7 +15,8 @@ public class User extends BaseModel {
     @Column(unique = true)
     private String username;
     private String password;
-    private String role;
+	@Enumerated(EnumType.STRING)
+    private Roles role;
 
 	public String getUsername() {
 		return this.username;
@@ -29,11 +34,11 @@ public class User extends BaseModel {
 		this.password = password;
 	}
 
-	public String getRole() {
+	public Roles getRole() {
 		return this.role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(Roles role) {
 		this.role = role;
 	}
 

@@ -53,31 +53,27 @@ public class UserResource {
     }
 
     @GetMapping("/teacher/api/students")
-    public List<UserDTO> getCashiers() {
-        return userAssembler.createDTOList(userService.getCashiers());
+    public List<UserDTO> getStudents() {
+        return userAssembler.createDTOList(userService.getStudents());
     }
 
     @PostMapping("/teacher/api/register/teacher")
 	@ResponseStatus(HttpStatus.CREATED)
-    public UserDTO registerAdmin(@RequestBody UserRegisterDTO dto) {
-        //try {
-            User user = userService.registerAdmin(userRegisterAssembler.createModel(dto));
-            return userAssembler.createDTO(user);
-        //} catch (ServiceException e) {
-        //    return new ResponseEntity<>(e.getHttpStatus());
-        //}
+    public UserDTO registerTeacher(@RequestBody UserRegisterDTO dto) {
+        User user = userService.registerTeacher(userRegisterAssembler.createModel(dto));
+        return userAssembler.createDTO(user);
     }
 
 	@PostMapping("/teacher/api/register/student")
 	@ResponseStatus(HttpStatus.CREATED)
-    public UserDTO registerCashier(@RequestBody UserRegisterDTO dto) {
-            User user = userService.registerCashier(userRegisterAssembler.createModel(dto));
+    public UserDTO registerStudent(@RequestBody UserRegisterDTO dto) {
+            User user = userService.registerStudent(userRegisterAssembler.createModel(dto));
             return userAssembler.createDTO(user);
         
     }
 
     @DeleteMapping("/teacher/api/delete/user/{username}")
-    public void removeUser(@PathVariable String username) {
+    public void deleteUser(@PathVariable String username) {
         userService.deleteUser(username);
     }
     
