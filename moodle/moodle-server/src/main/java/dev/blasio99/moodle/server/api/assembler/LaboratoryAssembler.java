@@ -10,6 +10,7 @@ import dev.blasio99.moodle.server.model.Laboratory;
 
 @Component
 public class LaboratoryAssembler implements BaseAssembler<LaboratoryDTO, Laboratory>{
+	
 	private DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
     @Override

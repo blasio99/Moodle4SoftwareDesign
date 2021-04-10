@@ -3,23 +3,21 @@ package dev.blasio99.moodle.server.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Assignment extends BaseModel{
 	
-	@ManyToOne
-	private Laboratory laboratory;
+	private Integer laboratoryNumber;
 	private String name;
 	private LocalDateTime deadline;
 	private String description;
 
-	public Laboratory getLaboratory() {
-		return this.laboratory;
+	public Integer getLaboratoryNumber() {
+		return this.laboratoryNumber;
 	}
 
-	public void setLaboratory(Laboratory laboratory) {
-		this.laboratory = laboratory;
+	public void setLaboratoryNumber(Integer laboratoryNumber) {
+		this.laboratoryNumber = laboratoryNumber;
 	}
 
 	public String getName() {

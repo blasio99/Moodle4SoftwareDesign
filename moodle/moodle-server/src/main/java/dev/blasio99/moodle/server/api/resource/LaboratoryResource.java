@@ -1,4 +1,5 @@
 package dev.blasio99.moodle.server.api.resource;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,11 +47,11 @@ public class LaboratoryResource {
     }
 
     @GetMapping("api/lab/number/{number}")
-    public List<LaboratoryDTO> getConcertsByPerformer(@PathVariable Integer number) {
+    public List<LaboratoryDTO> getLaboratoriesByNumber(@PathVariable Integer number) {
         return laboratoryAssembler.createDTOList(laboratoryService.getLaboratoriesByNumber(number));
     }
 
-    @PostMapping("admin/api/lab/add")
+    @PostMapping("teacher/api/lab/add")
     public Laboratory addLaboratory(@RequestBody LaboratoryDTO dto) {
         return laboratoryService.addLaboratory(laboratoryAssembler.createModel(dto));
     }

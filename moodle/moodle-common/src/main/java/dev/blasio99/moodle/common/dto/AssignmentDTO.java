@@ -2,17 +2,17 @@ package dev.blasio99.moodle.common.dto;
 
 public class AssignmentDTO extends BaseDTO{
 	
-	private Long laboratoryId;
+	private Integer laboratoryNumber;
 	private String name;
 	private String deadline;
 	private String description;
 
-	public Long getLaboratoryId() {
-		return this.laboratoryId;
+	public Integer getLaboratoryNumber() {
+		return this.laboratoryNumber;
 	}
 
-	public void setLaboratoryId(Long laboratoryId) {
-		this.laboratoryId = laboratoryId;
+	public void setLaboratoryNumber(Integer laboratoryNumber) {
+		this.laboratoryNumber = laboratoryNumber;
 	}
 
 	public String getName() {

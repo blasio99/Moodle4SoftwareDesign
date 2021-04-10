@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import dev.blasio99.moodle.server.model.Assignment;
 
 public interface AssignmentRepository extends CrudRepository<Assignment, Long> {
-	public List<Assignment> findByLaboratoryId(Long id);
+	public List<Assignment> findByLaboratoryNumber(Integer number);
 	public Assignment findByName(String name);
 }

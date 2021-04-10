@@ -1,5 +1,6 @@
 package dev.blasio99.moodle.server.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +16,18 @@ public class AssignmentService {
     @Autowired
     private AssignmentRepository assignmentRepository;
 
-    public List<Assignment> getAssignmentsForLab(Long laboratoryId) {
-        return assignmentRepository.findByLaboratoryId(laboratoryId);
+	public List<Assignment> getAssignmentByLabNumber(Integer number) {
+        return assignmentRepository.findByLaboratoryNumber(number);
     }
 
-    /*public Assignment addTicket(Assignment assignment) throws ServiceException {
-        List<Assignment> assignments = getTicketsForConcert(assignment.getConcert().getId());
-        Long nrOfTicketsSold = assignments.stream().map(t -> t.getSeats()).reduce(0L, Long::sum);
-        if (nrOfTicketsSold + assignment.getSeats() > assignment.getConcert().getMaxNrOfTickets()) {
-            throw new ServiceException("Sold out", HttpStatus.CONFLICT) ;
+	public List<Assignment> getAllAssignments() {
+        Iterable<Assignment> iterable = assignmentRepository.findAll();
+        List<Assignment> assignments = new ArrayList<>();
+        for (Assignment it : iterable) {
+            assignments.add(it);
         }
-        return assignmentRepository.save(assignment);
-    }*/
+        return assignments;
+    }
 
 	public Assignment addAssignment(Assignment assignment) {
         return assignmentRepository.save(assignment);
