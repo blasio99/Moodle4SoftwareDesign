@@ -1,4 +1,4 @@
-package dev.blasio99.moodle.server.service;
+package dev.blasio99.moodle.server.exception;
 
 import org.springframework.http.HttpStatus;
 

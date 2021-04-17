@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import dev.blasio99.moodle.server.exception.ServiceException;
 import dev.blasio99.moodle.server.model.Laboratory;
 import dev.blasio99.moodle.server.repo.LaboratoryRepository;
 

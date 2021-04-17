@@ -12,18 +12,19 @@ public class UserRegisterAssembler implements BaseAssembler<UserRegisterDTO, Use
     @Override
     public User createModel(UserRegisterDTO dto) {
         User user = new User();
-        user.setPassword(dto.getPassword());
-        user.setId(dto.getId());
+		user.setId(dto.getId());
+		user.setEmail(dto.getEmail());
         user.setUsername(dto.getUsername());
+		user.setPassword(dto.getPassword());
         user.setRole(Roles.valueOf(dto.getRole()));
         return user;
     }
-
 
     @Override
     public UserRegisterDTO createDTO(User model) {
         UserRegisterDTO dto = new UserRegisterDTO();
         dto.setId(model.getId());
+		dto.setEmail(model.getEmail());
         dto.setUsername(model.getUsername());
         dto.setPassword(model.getPassword());
         dto.setRole(model.getRole().name());

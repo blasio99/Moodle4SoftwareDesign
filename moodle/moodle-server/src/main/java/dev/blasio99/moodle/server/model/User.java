@@ -13,10 +13,20 @@ import dev.blasio99.moodle.server.enums.Roles;
 public class User extends BaseModel {
     
     @Column(unique = true)
-    private String username;
-    private String password;
+	private String email;
+	@Column(unique = true)
+	private String username;
+	private String password;
 	@Enumerated(EnumType.STRING)
-    private Roles role;
+	private Roles role;
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getUsername() {
 		return this.username;
@@ -41,6 +51,8 @@ public class User extends BaseModel {
 	public void setRole(Roles role) {
 		this.role = role;
 	}
+
+	
 
 
 	

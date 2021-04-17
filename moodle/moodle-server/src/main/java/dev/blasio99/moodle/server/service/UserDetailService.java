@@ -15,13 +15,17 @@ public class UserDetailService implements UserDetailsService {
     private UserService userService;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.getUserByUsername(username);
-        if (user == null) throw new UsernameNotFoundException("No user with username " + username + " was found!");
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userService.getUserByEmail(email);
+        if (user == null) throw new UsernameNotFoundException("No user with email address '" + email + "' was found!");
         return org.springframework.security.core.userdetails.User.builder()
         .username(user.getUsername())
         .password(user.getPassword())
         .roles(user.getRole().name())
+		.accountExpired(false)//
+        .accountLocked(false)//
+        .credentialsExpired(false)//
+        .disabled(false)//
         .build();
     }
     

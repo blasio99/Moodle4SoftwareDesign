@@ -13,6 +13,7 @@ public class UserAssembler implements BaseAssembler<UserDTO, User> {
     public User createModel(UserDTO dto) {
         User user = new User();
         user.setId(dto.getId());
+		user.setEmail(dto.getEmail());
         user.setUsername(dto.getUsername());
         user.setRole(Roles.valueOf(dto.getRole()));
         return user;
@@ -22,6 +23,7 @@ public class UserAssembler implements BaseAssembler<UserDTO, User> {
     public UserDTO createDTO(User model) {
         UserDTO dto = new UserDTO();
         dto.setId(model.getId());
+		dto.setEmail(model.getEmail());
         dto.setUsername(model.getUsername());
         dto.setRole(model.getRole().name());
         return dto;

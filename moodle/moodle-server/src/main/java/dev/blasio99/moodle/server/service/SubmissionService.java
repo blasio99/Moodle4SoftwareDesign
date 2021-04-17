@@ -12,9 +12,9 @@ import dev.blasio99.moodle.server.model.Assignment;
 import dev.blasio99.moodle.server.repo.AssignmentRepository;
 
 @Service
-public class AssignmentService {
+public class SubmissionService {
     
-    @Autowired
+    /*@Autowired
     private AssignmentRepository assignmentRepository;
 
 	public List<Assignment> getAssignmentByLabNumber(Integer number) {
@@ -45,6 +45,6 @@ public class AssignmentService {
         Assignment assignment = assignmentRepository.findByName(name);
         if (assignment == null) return;
         assignmentRepository.delete(assignment);
-    }
+    }*/
 
 }

@@ -19,7 +19,7 @@ import dev.blasio99.moodle.common.dto.LaboratoryDTO;
 
 import dev.blasio99.moodle.server.api.assembler.LaboratoryAssembler;
 import dev.blasio99.moodle.server.model.Laboratory;
-import dev.blasio99.moodle.server.service.ServiceException;
+import dev.blasio99.moodle.server.exception.ServiceException;
 import dev.blasio99.moodle.server.service.LaboratoryService;
 
 

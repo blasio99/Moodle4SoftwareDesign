@@ -23,8 +23,8 @@ import dev.blasio99.moodle.server.service.AssignmentService;
 
 @CrossOrigin("*")
 @RestController
-public class AssignmentResource {
-	@Autowired
+public class SubmissionResource {
+	/*@Autowired
     private AssignmentService assignmentService;
 
     @Autowired
@@ -56,5 +56,5 @@ public class AssignmentResource {
     @DeleteMapping("/teacher/api/assignment/delete/{name}")
     public void deleteAssignment(@PathVariable String name) {
         assignmentService.deleteAssignment(name);
-    }
+    }*/
 }
