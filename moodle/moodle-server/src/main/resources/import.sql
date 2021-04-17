@@ -1,6 +1,6 @@
-insert into user (email, username, password, role) values ("benedekbalazs1999@gmail.com", "blasio99"     , "$2a$10$emzGRajpkxZ9nr7G8Vnn0ul.0/I3oskXYk8.iwt7P5JJnP67rFBYG", 'TEACHER');
-insert into user (email, username, password, role) values ("benedekabalazs@gmail.com"   , "benedekbalazs", "$2y$12$HmU0UzP2fd64N56ys0Vk7ePDgpdvnjiKRtDtHRzj8sZk1bchRKofm", 'STUDENT');
-insert into user (email, username, password, role) values ("elon@musk.com"              , "elonmusk"     , "$2y$12$rR7xCTwOsS5N6m6KT19Ceuvf/7g9WpWT7tZd5qU5Jkl07CpJGqbjm", 'STUDENT');
+insert into user (email, username, password, role, group_name, hobby) values ("benedekbalazs1999@gmail.com", "blasio99"     , "$2a$10$emzGRajpkxZ9nr7G8Vnn0ul.0/I3oskXYk8.iwt7P5JJnP67rFBYG", 'TEACHER', 'PROFESSORSHIP' , "Ice-Hockey");
+insert into user (email, username, password, role, group_name, hobby) values ("benedekabalazs@gmail.com"   , "benedekbalazs", "$2y$12$HmU0UzP2fd64N56ys0Vk7ePDgpdvnjiKRtDtHRzj8sZk1bchRKofm", 'STUDENT', 'GROUP_30432_S2', "Football");
+insert into user (email, username, password, role, group_name, hobby) values ("elon@musk.com"              , "elonmusk"     , "$2y$12$rR7xCTwOsS5N6m6KT19Ceuvf/7g9WpWT7tZd5qU5Jkl07CpJGqbjm", 'STUDENT', 'GROUP_30432_S2', "Cars");
 insert into laboratory (number, date, title, curricula, description) values (1 , '2021-03-21T20:00:00', "Lab 1" , "Design Patterns", "Today we learn about design patterns at the first laboratory of Software Design");
 insert into laboratory (number, date, title, curricula, description) values (9 , '2021-03-21T20:00:00', "Lab 9" , "Frontend basics", "Today we learn about Frontend basics at the 9th laboratory of Software Design");
 insert into laboratory (number, date, title, curricula, description) values (13, '2021-03-21T20:00:00', "Lab 13", "Vue.js", "Today we learn about Vue.js at the 13th laboratory of Software Desing");

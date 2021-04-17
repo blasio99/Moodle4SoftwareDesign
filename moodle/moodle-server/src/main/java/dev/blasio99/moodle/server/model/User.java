@@ -6,6 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
+import dev.blasio99.moodle.server.enums.GroupNames;
 import dev.blasio99.moodle.server.enums.Roles;
 
 @Entity
@@ -19,6 +20,9 @@ public class User extends BaseModel {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Roles role;
+	@Enumerated(EnumType.STRING)
+	private GroupNames groupName;
+	private String hobby;
 
 	public String getEmail() {
 		return this.email;
@@ -52,6 +56,21 @@ public class User extends BaseModel {
 		this.role = role;
 	}
 
+	public GroupNames getGroupName() {
+		return this.groupName;
+	}
+
+	public void setGroupName(GroupNames groupName) {
+		this.groupName = groupName;
+	}
+
+	public String getHobby() {
+		return this.hobby;
+	}
+
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
 	
 
 

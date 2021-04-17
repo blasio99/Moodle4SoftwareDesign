@@ -3,6 +3,7 @@ package dev.blasio99.moodle.server.api.assembler;
 import org.springframework.stereotype.Component;
 
 import dev.blasio99.moodle.common.dto.UserDTO;
+import dev.blasio99.moodle.server.enums.GroupNames;
 import dev.blasio99.moodle.server.enums.Roles;
 import dev.blasio99.moodle.server.model.User;
 
@@ -15,6 +16,8 @@ public class UserAssembler implements BaseAssembler<UserDTO, User> {
         user.setId(dto.getId());
 		user.setEmail(dto.getEmail());
         user.setUsername(dto.getUsername());
+		user.setGroupName(GroupNames.valueOf(dto.getGroupName()));
+		user.setHobby(dto.getHobby());
         user.setRole(Roles.valueOf(dto.getRole()));
         return user;
     }
@@ -25,6 +28,8 @@ public class UserAssembler implements BaseAssembler<UserDTO, User> {
         dto.setId(model.getId());
 		dto.setEmail(model.getEmail());
         dto.setUsername(model.getUsername());
+		dto.setGroupName(model.getGroupName().name());
+		dto.setHobby(model.getHobby());
         dto.setRole(model.getRole().name());
         return dto;
     }

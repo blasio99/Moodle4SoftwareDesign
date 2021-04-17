@@ -1,7 +1,6 @@
 package dev.blasio99.moodle.server.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import dev.blasio99.moodle.server.enums.GroupNames;
 import dev.blasio99.moodle.server.enums.Roles;
 import dev.blasio99.moodle.server.exception.ServiceException;
 import dev.blasio99.moodle.server.model.User;
@@ -26,8 +26,7 @@ public class UserService {
     private ValidationService validator;
 
     public User registerUser(User user, Roles role) throws ServiceException {
-		
-		System.out.println("-------------- " + user.getEmail());
+
 		if (!validator.validateEmail(user.getEmail())) 
 			throw new ServiceException("Invalid email address!", HttpStatus.UNPROCESSABLE_ENTITY);
         if (!validator.validateUsername(user.getUsername())) 
@@ -77,12 +76,9 @@ public class UserService {
         return user;
     }
 
-
-
-	public Optional<User> getUserById(Long id) throws ServiceException {
-        Optional<User> user =  userRepository.findById(id);
-        if (user == null) throw new ServiceException("User not found", HttpStatus.NOT_FOUND);
-        return user;
+	public List<User> getUsersByGroup(String groupName) throws ServiceException {
+        List<User> users =  userRepository.findByGroupName(GroupNames.valueOf(groupName));
+        return users;
     }
 
 	public User registerStudent(User user) throws ServiceException {

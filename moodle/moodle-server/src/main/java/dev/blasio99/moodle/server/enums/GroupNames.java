@@ -1,0 +1,13 @@
+package dev.blasio99.moodle.server.enums;
+
+public enum GroupNames {
+	GROUP_30431_S1,
+	GROUP_30431_S2,
+	GROUP_30432_S1,
+	GROUP_30432_S2,
+	GROUP_30433_S1,
+	GROUP_30433_S2,
+	GROUP_30434_S1,
+	GROUP_30434_S2,
+	PROFESSORSHIP
+}

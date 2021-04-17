@@ -63,9 +63,9 @@ public class UserResource {
 		
 		SecureToken secureToken = secureTokenService.findByToken(token);
 
-		if(Objects.isNull(secureToken) || secureToken.isExpired() || !secureToken.getEmail().equals(dto.getEmail())){
+		if(Objects.isNull(secureToken) || secureToken.isExpired() || !secureToken.getEmail().equals(dto.getEmail()))
             throw new InvalidTokenException("Token is not valid");
-        }
+        
 		User user = userService.registerStudent(userRegisterAssembler.createModel(dto));
 		
 		secureTokenService.removeToken(secureToken);
@@ -85,6 +85,11 @@ public class UserResource {
     @GetMapping("/teacher/api/students")
     public List<UserDTO> getStudents() {
         return userAssembler.createDTOList(userService.getStudents());
+    }
+
+	@GetMapping("/teacher/api/students/group/{group}")
+    public List<UserDTO> getStudentsFromGroup(@PathVariable String group) {
+        return userAssembler.createDTOList(userService.getUsersByGroup(group));
     }
 
     @PostMapping("/teacher/api/register/teacher")
