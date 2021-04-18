@@ -1,6 +1,6 @@
 package dev.blasio99.moodle.server.enums;
 
-public enum GroupNames {
+public enum GroupName {
 	GROUP_30431_S1,
 	GROUP_30431_S2,
 	GROUP_30432_S1,

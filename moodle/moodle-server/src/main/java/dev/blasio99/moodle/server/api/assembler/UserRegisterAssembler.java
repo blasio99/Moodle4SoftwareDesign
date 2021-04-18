@@ -3,8 +3,8 @@ package dev.blasio99.moodle.server.api.assembler;
 import org.springframework.stereotype.Component;
 
 import dev.blasio99.moodle.common.dto.UserRegisterDTO;
-import dev.blasio99.moodle.server.enums.GroupNames;
-import dev.blasio99.moodle.server.enums.Roles;
+import dev.blasio99.moodle.server.enums.GroupName;
+import dev.blasio99.moodle.server.enums.Role;
 import dev.blasio99.moodle.server.model.User;
 
 @Component
@@ -17,9 +17,9 @@ public class UserRegisterAssembler implements BaseAssembler<UserRegisterDTO, Use
 		user.setEmail(dto.getEmail());
         user.setUsername(dto.getUsername());
 		user.setPassword(dto.getPassword());
-		user.setGroupName(GroupNames.valueOf(dto.getGroupName()));
+		user.setGroupName(GroupName.valueOf(dto.getGroupName()));
 		user.setHobby(dto.getHobby());
-        user.setRole(Roles.valueOf(dto.getRole()));
+        user.setRole(Role.valueOf(dto.getRole()));
         return user;
     }
 

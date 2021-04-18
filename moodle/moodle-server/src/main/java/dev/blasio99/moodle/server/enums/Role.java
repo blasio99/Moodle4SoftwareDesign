@@ -1,5 +1,5 @@
 package dev.blasio99.moodle.server.enums;
 
-public enum Roles {
+public enum Role {
 	TEACHER, STUDENT
 }
