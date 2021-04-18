@@ -5,36 +5,38 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.blasio99.moodle.common.dto.AssignmentDTO;
-
-import dev.blasio99.moodle.server.api.assembler.AssignmentAssembler;
-import dev.blasio99.moodle.server.model.Assignment;
+import dev.blasio99.moodle.common.dto.SubmissionDTO;
+import dev.blasio99.moodle.server.api.assembler.SubmissionAssembler;
+import dev.blasio99.moodle.server.model.Submission;
 import dev.blasio99.moodle.server.exception.ServiceException;
-import dev.blasio99.moodle.server.service.AssignmentService;
+import dev.blasio99.moodle.server.service.SubmissionService;
 
 
 @CrossOrigin("*")
 @RestController
 public class SubmissionResource {
-	/*@Autowired
-    private AssignmentService assignmentService;
+	@Autowired
+    private SubmissionService submissionService;
 
     @Autowired
-    private AssignmentAssembler assignmentAssembler;
+    private SubmissionAssembler submissionAssembler;
 
 	
-    @GetMapping("api/assignment/lab/{number}")
-    public ResponseEntity<List<AssignmentDTO>> getAssignmentByName(@PathVariable Integer number) {
+    @GetMapping("api/assignment/submission/{userId}")
+    public ResponseEntity<List<SubmissionDTO>> getAssignmentByName(@PathVariable Long userId) {
         try {
-            List<AssignmentDTO> assignment = assignmentAssembler.createDTOList(assignmentService.getAssignmentByLabNumber(number));
+            List<SubmissionDTO> assignment = submissionAssembler.createDTOList(submissionService.getSubmissionByUserId(userId));
             return new ResponseEntity<>(assignment, HttpStatus.OK);
         }
         catch(ServiceException e) {
@@ -43,18 +45,21 @@ public class SubmissionResource {
  
     }
 
-    @PostMapping("teacher/api/assignment/add")
-    public Assignment addAssignment(@RequestBody AssignmentDTO dto) {
-        return assignmentService.addAssignment(assignmentAssembler.createModel(dto));
+	@GetMapping("teacher/api/assignment/submissions/all")
+	public List<SubmissionDTO> getSubmissions() {
+		return submissionAssembler.createDTOList(submissionService.getAllSubmissions());
     }
 
-	@GetMapping("api/assignment/all")
-	public List<AssignmentDTO> getAssignments() {
-		return assignmentAssembler.createDTOList(assignmentService.getAllAssignments());
-    }
+	@PostMapping("api/assignment/submit")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Submission submitAssignment(@RequestBody SubmissionDTO dto){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return submissionService.submitAssignment(submissionAssembler.createModel(dto), authentication);
+	}
 
-    @DeleteMapping("/teacher/api/assignment/delete/{name}")
-    public void deleteAssignment(@PathVariable String name) {
-        assignmentService.deleteAssignment(name);
-    }*/
+	@PostMapping("teacher/api/assignment/grade")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Submission gradeAssignment(@RequestParam Long submissionId, @RequestParam Double grade){
+		return submissionService.gradeAssignment(submissionId, grade);
+	}
 }

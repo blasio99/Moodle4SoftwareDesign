@@ -2,13 +2,33 @@ package dev.blasio99.moodle.server.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Submission {
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long submissionId;
 	private Long assignmentId;
 	private Long userId;
 	private LocalDateTime submissionDate;
 	private String gitLink;
 	private String description;
 	private double grade;
+
+	public Long getSubmissionId() {
+		return this.submissionId;
+	}
+
+	public void setSubmissionId(Long submissionId) {
+		this.submissionId = submissionId;
+	}
 
 	public Long getAssignmentId() {
 		return this.assignmentId;

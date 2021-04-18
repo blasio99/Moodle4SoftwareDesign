@@ -5,46 +5,47 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import dev.blasio99.moodle.server.exception.ServiceException;
-import dev.blasio99.moodle.server.model.Assignment;
-import dev.blasio99.moodle.server.repo.AssignmentRepository;
+import dev.blasio99.moodle.server.model.Submission;
+import dev.blasio99.moodle.server.repo.SubmissionRepository;
+import dev.blasio99.moodle.server.repo.UserRepository;
 
 @Service
 public class SubmissionService {
     
-    /*@Autowired
-    private AssignmentRepository assignmentRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	public List<Assignment> getAssignmentByLabNumber(Integer number) {
-        return assignmentRepository.findByLaboratoryNumber(number);
+	@Autowired
+    private SubmissionRepository submissionRepository;
+
+	public List<Submission> getSubmissionByUserId(Long id) {
+        return submissionRepository.findByUserId(id);
     }
 
-	public List<Assignment> getAllAssignments() {
-        Iterable<Assignment> iterable = assignmentRepository.findAll();
-        List<Assignment> assignments = new ArrayList<>();
-        for (Assignment it : iterable) {
-            assignments.add(it);
+	public List<Submission> getAllSubmissions() {
+        Iterable<Submission> iterable = submissionRepository.findAll();
+        List<Submission> submissions = new ArrayList<>();
+        for (Submission it : iterable) {
+            submissions.add(it);
         }
-        return assignments;
+        return submissions;
     }
 
-	public Assignment addAssignment(Assignment assignment) {
-        return assignmentRepository.save(assignment);
+	public Submission submitAssignment(Submission submission, Authentication authentication) {
+		submission.setUserId(userRepository.findByUsername(authentication.getName()).getId());
+		submission.setGrade(-1);
+        return submissionRepository.save(submission);
     }
 
-	public Assignment updateAssignment(Assignment assignment) throws ServiceException {
-        Assignment assign = assignmentRepository.findByName(assignment.getName());
-        //check if an assignment with the new name does not exist
-        if (assign != null && !(assign.getId().equals(assignment.getId()))) throw new ServiceException("Assignment name already exists!", HttpStatus.CONFLICT);
-        return assignmentRepository.save(assignment);
+	public Submission gradeAssignment(Long submissionId, Double grade) throws ServiceException {
+        Submission submission = submissionRepository.findBySubmissionId(submissionId);
+        if (submission == null) throw new ServiceException("Assignment submission does not exist!", HttpStatus.CONFLICT);
+        
+		submission.setGrade(grade);
+		return submissionRepository.save(submission);
     }
-
-    public void deleteAssignment(String name) {
-        Assignment assignment = assignmentRepository.findByName(name);
-        if (assignment == null) return;
-        assignmentRepository.delete(assignment);
-    }*/
-
 }

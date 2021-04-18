@@ -1,12 +1,21 @@
 package dev.blasio99.moodle.common.dto;
 
 public class SubmissionDTO {
+	private Long submissionId;
 	private Long assignmentId;
 	private Long userId;
 	private String submissionDate;
 	private String gitLink;
 	private String description;
 	private double grade;
+	
+	public Long getSubmissionId() {
+		return this.submissionId;
+	}
+
+	public void setSubmissionId(Long submissionId) {
+		this.submissionId = submissionId;
+	}
 
 	public Long getAssignmentId() {
 		return this.assignmentId;
